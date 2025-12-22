@@ -1,0 +1,7 @@
+{
+  "extends": ["react-app"],
+  // "extends": ["airbnb"],
+  "rules": {
+    "no-alert": "error",
+  },
+}

@@ -1,0 +1,30 @@
+.input-select {
+  height: 100%;
+  font-size: 0.7rem;
+  padding: 0.5rem;
+  font-family: 'Inter Light', sans-serif;
+  font-weight: bold;
+  outline: none;
+  border: none;
+}
+
+.input-select-option {
+  font-size: 0.7rem;
+  font-family: 'Inter Light', sans-serif;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+
+  outline: none;
+}
+
+.select-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid 'black';
+  font-size: 11px;
+  transition: all 0.3s ease-in-out;
+}

@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ../../../apps/backend
+    env_file:
+      - ../../../.env.staging
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.api-staging.rule=Host(`api.staging.ouvrier.com`)'
+      - 'traefik.http.routers.api-staging.entrypoints=websecure'
+      - 'traefik.http.routers.api-staging.tls.certresolver=letsencrypt'
+    restart: always
+
+  frontend_admin:
+    build: ../../../apps/frontend-admin
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.admin-staging.rule=Host(`admin.staging.ouvrier.com`)'
+      - 'traefik.http.routers.admin-staging.entrypoints=websecure'
+      - 'traefik.http.routers.admin-staging.tls.certresolver=letsencrypt'
+    restart: always
+
+  frontend_public:
+    build: ../../../apps/frontend-public
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.public-staging.rule=Host(`staging.ouvrier.com`)'
+      - 'traefik.http.routers.public-staging.entrypoints=websecure'
+      - 'traefik.http.routers.public-staging.tls.certresolver=letsencrypt'
+    restart: always
+
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo_staging:/data/db
+    restart: always
+
+volumes:
+  mongo_staging:

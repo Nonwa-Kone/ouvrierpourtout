@@ -1,0 +1,235 @@
+.modalDetailOrder-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+
+  &-bagde-amount {
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  &-body {
+    width: 100%;
+    height: auto;
+    margin: 1rem 0;
+
+    &-title {
+      font-size: 0.9rem;
+      font-family: 'Roboto Bold';
+      font-weight: bold;
+      color: #212121 !important;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &-body-row {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+
+    &-item {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+      gap: 1rem;
+
+      &:nth-child(2) {
+        align-items: center;
+      }
+
+      &:last-child {
+        align-items: flex-end;
+      }
+    }
+  }
+
+  &-body-item {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+
+    &-title {
+      font-size: 0.775rem;
+      font-family: 'Inter Medium', sans-serif;
+      font-weight: normal;
+      color: #424242 !important;
+      margin-bottom: 0.5rem;
+    }
+
+    &-value {
+      font-size: 0.9rem;
+      font-family: 'Roboto Bold';
+      font-weight: bold;
+      color: #212121 !important;
+      margin-bottom: 0.5rem;
+
+      &:has(span) {
+        color: $primary-700 !important;
+      }
+    }
+  }
+}
+
+.modalLayout-container-footer-button {
+  flex: 1 !important;
+}
+
+.modalLayout {
+  position: fixed; /* Changed from absolute to fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #221e1e5d;
+  transition: all 0.3s ease-in-out;
+  z-index: 100;
+
+  .modalLayout-container {
+    width: 40%;
+    height: auto;
+    margin-inline: auto;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ededed;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .modalLayout-container {
+      width: 90%;
+      height: auto;
+    }
+  }
+
+  .modalLayout-container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    &-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    &-close {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      &-btn {
+        padding: 0.5rem;
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        border: none;
+        font-size: 1rem;
+        font-family: 'Roboto Bold';
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      }
+    }
+  }
+
+  .modalLayout-container-body {
+    width: 100%;
+    height: auto;
+    margin: 0rem 0;
+  }
+
+  .modalLayout-container-footer {
+    width: 100%;
+    height: auto;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    border-top: 1px solid #ededed;
+
+    button {
+      flex: 0 0 50%;
+      width: 100%;
+    }
+
+    button:has(svg) {
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        margin-right: 0.5rem !important;
+      }
+      padding: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        flex: 0 0 100%;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.modalSuccess-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--color-grey-light);
+
+  .modalSuccess-container-body {
+    width: 100%;
+    height: auto;
+    margin: 0rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .modalSuccess-container-body-item {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}

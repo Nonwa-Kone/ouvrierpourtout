@@ -1,0 +1,58 @@
+.page-offlines {
+  font-size: 14px;
+  font-family: 'Inter Light';
+  background-color: $gray-100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.loginPage-container--content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+
+  &--form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 100vh;
+    padding: 0 20px;
+    background-color: #fff !important;
+
+    &--logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem !important;
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      p {
+        font-size: 1.3rem;
+        font-family: 'Inter Regular';
+        font-weight: 700;
+        color: $blue-700;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.loginPage-container .loginPage-container--form--forgotPassword {
+  color: $blue-700 !important;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+}

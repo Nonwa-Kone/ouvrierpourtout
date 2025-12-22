@@ -1,0 +1,59 @@
+.descriptif {
+  position: relative;
+  min-height: 100vh;
+  max-width: 100%;
+  margin-top: 100px;
+  padding: 4.5rem 0;
+  background-image: url('../../../assets/images/img-ouvrier/bg-descriptif.jpg');
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  background-color: var(--dark);
+  z-index: 0;
+}
+
+.descriptif::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.descriptif h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 2rem;
+  z-index: 2;
+}
+
+.descriptif p {
+  font-size: 1.2rem;
+  color: var(--secondary);
+  /* text-align: center; */
+}
+
+.descriptif img {
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.descriptif-image {
+  position: relative;
+}
+
+.descriptif-image img {
+  border-radius: 8px;
+}
+
+.descriptif-content {
+  position: relative;
+  z-index: 2;
+}

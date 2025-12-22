@@ -1,0 +1,59 @@
+@import '../../../assets/css/styles.css';
+
+/*** Header ***/
+.carousel-inner {
+  max-height: 100vh;
+}
+
+.carousel-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-caption {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  text-align: start;
+  z-index: 1;
+}
+
+.carousel-caption .container .row .col-lg-8 h1 {
+  margin-top: -250px;
+  -webkit-text-stroke: 1px white;
+  text-align: left;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 15%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--primary);
+  border: 15px solid var(--secondary);
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  #header-carousel .carousel-item {
+    position: relative;
+    min-height: 450px;
+  }
+
+  #header-carousel .carousel-item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

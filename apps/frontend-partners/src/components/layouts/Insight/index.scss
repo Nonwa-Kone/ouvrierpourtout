@@ -1,0 +1,56 @@
+.insight {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  &-item {
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+    &-content {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+
+      &-column {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        align-items: start;
+
+        .stats-icon {
+          color: #d8d7e2;
+          background-color: #250fb4;
+          border-radius: 50%;
+          padding: 0.25rem;
+        }
+
+        &-label {
+          font-size: 0.75rem;
+          color: var(--color-gray-500);
+        }
+
+        &-value {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: var(--color-gray-900);
+        }
+      }
+    }
+
+    &-detail {
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      background-color: var(--color-gray-300);
+    }
+  }
+}

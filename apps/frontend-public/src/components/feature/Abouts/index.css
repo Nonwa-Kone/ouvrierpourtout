@@ -1,0 +1,45 @@
+.about {
+  margin: 50px 0;
+}
+
+.about .text {
+  text-align: justify;
+  font-size: 2rem;
+  font-family: 'Poppins';
+  font-weight: normal;
+}
+
+@media (max-width: 760px) {
+  .about .text {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.about .image {
+  border-radius: 15px;
+  /* aspect-ratio: 4 / 3; */
+  object-fit: cover;
+  object-position: center;
+}
+
+.service {
+  margin: 50px 0;
+}
+
+.service .card {
+  width: 32%;
+  height: 400;
+}
+
+@media (max-width: 760px) {
+  .service .card {
+    width: 100%;
+  }
+}
+
+.service .card .image {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+}

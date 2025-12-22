@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.npmrc
+.dockerignore
+.git
+.cursor
+.vscode
+.prettierrc
+.eslintrc
+.gitignore

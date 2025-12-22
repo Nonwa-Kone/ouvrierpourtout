@@ -1,0 +1,38 @@
+.footer {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--dark);
+  padding: 2rem 0;
+}
+
+.footer h3 {
+  color: var(--secondary);
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 1rem;
+}
+
+.footer p {
+  color: var(--secondary);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer .nav-item .nav-link {
+  transition: all 0.3s ease;
+}
+
+.footer .nav-item .nav-link:hover {
+  color: rgb(240, 209, 62) !important;
+}
+
+.social-icons a {
+  border: 1px solid rgb(240, 209, 62);
+  border-radius: 12px;
+  color: rgb(240, 209, 62);
+  padding: 1rem;
+}
+
+.social-icons a:hover {
+  background-color: rgb(240, 209, 62);
+  color: #262626;
+}

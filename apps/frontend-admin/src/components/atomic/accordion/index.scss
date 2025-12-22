@@ -1,0 +1,30 @@
+.accordion {
+    width: 100%;
+    @extend %flex-col-start-start;
+    border: 1px solid $gray-200;
+    background-color: $white;
+    border-radius: 8px;
+    margin: 0 0 1rem;
+    &--btn {
+        width: 100%;
+        height: 45px;
+        @extend %flex-row-center-between;
+        border: 0;
+
+        background-color: $white;
+        outline: none;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        font-size: 15px;
+        font-family: "Inter Semi Bold";
+        color: $dark-500;
+        cursor: pointer;
+    }
+    &--content {
+        width: 100%;
+        @extend %flex-col-center-start;
+        overflow: hidden;
+        background-color: $white;
+        border-top: solid $gray-200;
+    }
+}

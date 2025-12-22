@@ -1,0 +1,162 @@
+.tableLayout {
+  @extend %flex-col-center-start;
+  flex: 1;
+  overflow-y: scroll;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 0.75rem;
+  position: relative;
+
+  &--row {
+    width: 100%;
+    @extend %flex-row-center-between;
+    min-height: 60px;
+    // padding: 1rem 0;
+  }
+
+  &--cell {
+    @extend %flex-row-center-start;
+    flex: 1;
+    min-height: 60px;
+  }
+
+  &--header {
+    font-weight: 700;
+    background-color: #ccc;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  &--badge {
+    @extend %flex-row-center-center;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.4rem;
+    font-size: 0.775rem;
+    // max-width: 80%;
+  }
+
+  &--footer {
+    width: 100%;
+    @extend %flex-row-center-between;
+    background-color: #fff;
+    padding: 1rem;
+    border-top: 1px solid #f0f1f3;
+    margin-top: auto;
+    position: sticky;
+    position: -webkit-sticky;
+    bottom: 0;
+    &-pagination {
+      @extend %flex-row-center;
+    }
+  }
+
+  &--infosBox {
+    width: 100%;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+}
+
+.tableLayout--dropdown {
+  position: relative;
+  // width: 100%;
+  z-index: 200 !important;
+  //TODO: à revenir de suis après la presentation de demain consiste à reduire la taille des textes
+  & .dropdown--menu-items {
+    position: absolute;
+    top: 3rem;
+    background-color: #fff;
+    border-radius: 10px;
+    @extend %flex-col-center-start;
+    gap: 0.5rem;
+    overflow: hidden;
+
+    & .dropdown--menu-item {
+      width: 100%;
+      padding: 1rem;
+      @extend %flex-row-center-start;
+      gap: 0.5rem;
+      background-color: transparent;
+      border: 0;
+
+      p {
+        font-family: 'Roboto Medium';
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+      }
+      &:hover {
+        background-color: $primary-100;
+      }
+    }
+  }
+}
+
+.online-left-right-toolbar {
+  padding-left: '0.5rem';
+  padding-right: '0.5rem';
+  padding-top: '1rem';
+  padding-bottom: '1rem';
+  @extend %flex-row-start-between;
+  gap: 0.5rem;
+  background-color: $purple-400 !important;
+
+  &-left {
+    @extend %flex-row-center-center;
+    & .dropdown {
+      position: relative;
+      // width: 100%;
+      z-index: 200 !important;
+    }
+  }
+
+  &-right {
+    @extend %flex-row-center-center;
+    & .dropdown {
+      position: relative;
+      // width: 100%;
+      z-index: 200 !important;
+    }
+  }
+}
+
+@function random-gradient() {
+  $colors: red, orange, yellow, green, blue, indigo, violet;
+  $start-color: nth($colors, random(length($colors)));
+  $end-color: nth($colors, random(length($colors)));
+  $opacity: 0.3; // Adjust this value to change the opacity
+  @return linear-gradient(
+    45deg,
+    rgba($start-color, $opacity) 30%,
+    rgba($end-color, $opacity) 70%
+  );
+}
+
+@function randomColor() {
+  @return rgb(random(255), random(255), random(255));
+}
+
+.usersItemsLayout {
+  &--avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    @extend %flex-col-center-center;
+
+    // background: linear-gradient(45deg, randomColor(), randomColor());
+    background-color: $primary-100;
+  }
+  &--avatarText {
+    font-family: 'Roboto Bold';
+    font-size: 50px;
+    @function randomColor() {
+      @return rgb(random(255), random(255), random(255));
+    }
+    color: randomColor();
+  }
+}

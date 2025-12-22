@@ -1,0 +1,24 @@
+// Global
+@import './variable.scss';
+@import './reset.scss';
+@import './placeholder.scss';
+@import './font.scss';
+
+// Component
+@import '../components/atomic/Button';
+@import '../components/layouts/index.scss';
+@import '../components/atomic/Select/index.scss';
+@import '../components/atomic/upload/index.scss';
+@import '../components/atomic/Loader/index.scss';
+@import '../components/atomic/modals/index.scss';
+// @import '../components/atomic/accordion/index.scss';
+@import '../components/atomic/buttons/index.scss';
+@import '../components/atomic/fields/index.scss';
+@import '../components/layouts/tableLayout/index.scss';
+
+//Page
+@import '../pages/offlines/index.scss';
+@import '../pages/onlines/index.scss';
+
+//HOC
+@import '../hoc/index.scss';

@@ -1,0 +1,19 @@
+.ticketsPage {
+  padding: 1rem;
+  // width: 100%;
+  background-color: $gray-300 !important;
+  height: calc(100% - 5rem);
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: start;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  &--tickets-title {
+    margin-bottom: 1rem;
+    p {
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+  }
+}

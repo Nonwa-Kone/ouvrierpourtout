@@ -1,0 +1,11 @@
+.demandeOuvriers {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+@media screen and (max-width: 768px) {
+  .demandeOuvriers {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}

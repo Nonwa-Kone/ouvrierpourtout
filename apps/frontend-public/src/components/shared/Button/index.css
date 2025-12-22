@@ -1,0 +1,15 @@
+@import url(../../../assets/css/styles.css);
+
+button.choix {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+  transition: all 0.1s ease-in-out;
+  border-radius: none !important;
+}
+
+button.choix:hover {
+  background-color: var(--or) !important;
+  color: var(--blue-fonce);
+}

@@ -1,0 +1,15 @@
+export const globalStyle = {
+  dark: '#1E1E1E',
+  light: '#FFFFFF',
+  primary: '#007AFF',
+  secondary: '#007AFF',
+  success: '#007AFF',
+  warning: '#FFA500',
+  danger: '#FF0000',
+  info: '#007AFF',
+  darkGray: '#1E1E1E',
+  gray: '#CCCCCC',
+  lightGray: '#F5F5F5',
+  white: '#FFFFFF',
+  black: '#000000',
+};

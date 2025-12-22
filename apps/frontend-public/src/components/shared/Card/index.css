@@ -1,0 +1,65 @@
+.col-4 .description {
+  position: relative;
+  background-color: var(--primary-transparent);
+  padding: 1rem;
+}
+
+.col-4 .description h3 {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.col-4 .description p {
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.feature::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000008a;
+  z-index: 0;
+  border-radius: 100%;
+}
+
+.feature {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
+
+.feature img {
+  border-top-left-radius: 50px !important;
+  filter: blur(10px);
+}
+
+/* .feature:hover {
+  transform: scale(1.2);
+} */
+
+.feature .description {
+  position: absolute;
+  top: 50px;
+  left: 40px;
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+}
+
+.feature .description h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.feature .description p {
+  /* text-align: center; */
+  font-size: 22px;
+  font-weight: 600;
+}

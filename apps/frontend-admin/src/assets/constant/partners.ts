@@ -1,0 +1,52 @@
+export const initPartner = {
+  personalInfos: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    gender: '',
+    numberOfChildren: '',
+    birthDay: '',
+    locateDay: '',
+    familySituation: '',
+  },
+  address: {
+    city: '',
+    zipCode: '',
+    country: '',
+    street: '',
+    municipality: '',
+    villa: '',
+  },
+  profession: {
+    jobs: '',
+    speciality: '',
+    diploma: '',
+    experience: '',
+  },
+  nationality: 'Ivoirienne',
+  contract: {
+    typeOfContract: '',
+    referenceContract: '',
+    remuneration: '',
+  },
+  token: '',
+  password: '',
+  isFirstLogin: false,
+  isActive: false,
+  isLogged: false,
+  createdAt: '',
+  updateAt: '',
+};
+
+export const initFilterPartner = {
+  city: '',
+  jobs: '',
+  speciality: '',
+  availability: null,
+  typeOfContract: null,
+  isActive: null,
+  searchTerm: null,
+  limit: 10,
+  page: 1,
+};

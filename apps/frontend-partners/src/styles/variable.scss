@@ -1,0 +1,201 @@
+$primary: #9c1e18;
+$secondary: hsla(240, 50%, 100%);
+$dark: #262626;
+$grey: #525252;
+$shadow: 8px 10px 20px;
+$primary-transparent: hsla(249, 100%, 50%, 0.1);
+$blue: rgb(93, 193, 221);
+$or: rgb(240, 209, 62);
+$blue-fonce: rgb(58, 143, 159);
+$body-color: rgb(190, 194, 160);
+
+//warning
+$warning-50: #fffbeb;
+$warning-100: #fef3c7;
+$warning-200: #fde68a;
+$warning-300: #fcd34d;
+$warning-400: #fbbf24;
+$warning-500: #f59e0b;
+$warning-600: #d97706;
+$warning-700: #b45309;
+$warning-800: #92400e;
+$warning-900: #78350f;
+
+//success
+$success-50: #e9f8f0;
+$success-100: #c6f6d5;
+$success-200: #9aefbc;
+$success-300: #6ae59b;
+$success-400: #3ee07f;
+$success-500: #0eef6b;
+$success-600: #0cd664;
+$success-700: #0abe3e;
+$success-800: #068b15;
+$success-900: #046c11;
+
+//red
+$danger-50: #fde8e8;
+$danger-100: #fbd0d0;
+$danger-200: #f7a1a1;
+$danger-300: #f37272;
+$danger-400: #ef4343;
+$danger-500: #ef4444;
+$danger-600: #bc1010;
+$danger-700: #8d0c0c;
+$danger-800: #5e0808;
+$danger-900: #2f0404;
+
+// neutral
+$neutral-50: #f9fafb;
+$neutral-100: #f3f4f6;
+$neutral-200: #e5e7eb;
+$neutral-300: #d1d5db;
+$neutral-400: #9ca3af;
+$neutral-500: #6b7280;
+$neutral-600: #4b5563;
+$neutral-700: #374151;
+$neutral-800: #1f2937;
+$neutral-900: #111827;
+
+// primary
+$primary-50: #e5edff;
+$primary-100: #ccdaff;
+$primary-200: #99b6ff;
+$primary-300: #6691ff;
+$primary-400: #336dff;
+$primary-500: #001750;
+$primary-600: #003acc;
+$primary-700: #002b99;
+$primary-800: #001d66;
+
+$dark: #262626;
+$white: #ffffff;
+
+$yellow-100: '#FFF6E1';
+$yellow-200: '#FFF3D0';
+$yellow-300: '#FFF0BF';
+$yellow-400: '#FFE687';
+$yellow-500: '#FFDF66';
+$yellow-600: '#FFD633';
+$yellow-700: '#F9CD1A';
+$yellow-800: '#F8C400';
+$yellow-900: '#F5BD00';
+$yellow-A100: '#F1B500';
+$yellow-A200: '#E8A600';
+
+$blue-100: '#EBEFFA';
+$blue-200: '#DDE3F7';
+$blue-300: '#CFD8F4';
+$blue-400: '#ABBCED';
+$blue-500: '#829AE3';
+$blue-600: '#5879DA';
+$blue-700: '#4265CC';
+$blue-800: '#2C51BE';
+$blue-900: '#294CB5';
+$blue-A100: '#2647AC';
+$blue-A200: '##223F9A';
+
+$gray-100: '#F5F5F5';
+$gray-200: '#EEEEEE';
+$gray-300: '#E0E0E0';
+$gray-400: '#BDBDBD';
+$gray-500: '#9E9E9E';
+$gray-600: '#757575';
+$gray-700: '#616161';
+$gray-800: '#424242';
+$gray-900: '#212121';
+$gray-A100: '#F5F5F5';
+$gray-A200: '#EEEEEE';
+$gray-A400: '#BDBDBD';
+$gray-A700: '#616161';
+
+$purple-50: '#FED9D5';
+$purple-100: '#FEACAD';
+$purple-200: '#FD838F';
+$purple-300: '#FB6382';
+$purple-400: '#F9316D';
+$purple-500: '#D6236A';
+$purple-600: '#B31865';
+$purple-700: '#900F5C';
+$purple-800: '#6E0C4F';
+$purple-900: '#4C0A3B';
+$purple-A100: '#F5F5F5';
+$purple-A200: '#EEEEEE';
+
+$green-50: '#E8F5E9';
+$green-100: '#C8E6C9';
+$green-200: '#A5D6A7';
+$green-300: '#81C784';
+$green-400: '#66BB6A';
+$green-500: '#4CAF50';
+$green-600: '#43A047';
+$green-700: '#388E3C';
+$green-800: '#2E7D32';
+$green-900: '#1B5E20';
+$green-A100: '#B9F6CA';
+$green-A200: '#69F0AE';
+$green-A400: '#00E676';
+$green-A700: '#00C853';
+
+$red-100: '#FFEBEE';
+$red-200: '#FFCDD2';
+$red-300: '#EF9A9A';
+$red-400: '#E57373';
+$red-500: '#EF5350';
+$red-600: '#E53935';
+$red-700: '#D32F2F';
+$red-800: '#C62828';
+$red-900: '#B71C1C';
+$red-A100: '#FF8A80';
+$red-A200: '#FF5252';
+$red-A400: '#FF1744';
+$red-A700: '#D50000';
+
+$dark-100: '#C1C1C1';
+$dark-200: '#B3B3B3';
+$dark-300: '#A6A6A6';
+$dark-400: '#999';
+$dark-500: '#8E8E8E';
+$dark-600: '#808080';
+$dark-700: '#757575';
+$dark-800: '#696969';
+$dark-900: '#616161';
+$dark-A100: '#E1E1E1';
+$dark-A200: '#B3B3B3';
+$dark-A400: '#9E9E9E';
+$dark-A700: '#616161';
+
+$black-100: '#000000';
+$black-200: '#000000';
+$black-300: '#000000';
+$black-400: '#000000';
+$black-500: '#000000';
+$black-600: '#000000';
+$black-700: '#000000';
+$black-800: '#000000';
+$black-900: '#000000';
+$black-A100: '#000000';
+$black-A200: '#000000';
+$black-A400: '#000000';
+$black-A700: '#000000';
+
+$white-100: '#FFFFFF';
+$white-200: '#FFFFFF';
+$white-300: '#FFFFFF';
+$white-400: '#FFFFFF';
+$white-500: '#FFFFFF';
+$white-600: '#FFFFFF';
+$white-700: '#FFFFFF';
+$white-800: '#FFFFFF';
+$white-900: '#FFFFFF';
+$white-A100: '#FFFFFF';
+$white-A200: '#FFFFFF';
+$white-A400: '#FFFFFF';
+$white-A700: '#FFFFFF';
+
+$primary-color: $blue-500;
+$secondary-color: $gray-600;
+$success-color: $green-500;
+$info-color: $blue-500;
+$warning-color: $yellow-500;
+$danger-color: $red-500;

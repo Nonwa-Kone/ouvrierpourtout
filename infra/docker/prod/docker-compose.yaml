@@ -1,0 +1,66 @@
+version: '3.9'
+
+services:
+  traefik:
+    image: traefik:v3.0
+    command:
+      - '--providers.docker=true'
+      - '--entrypoints.web.address=:80'
+      - '--entrypoints.websecure.address=:443'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
+      - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web'
+      - '--certificatesresolvers.letsencrypt.acme.email=admin@ouvrier.com'
+      - '--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json'
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - letsencrypt:/letsencrypt
+    restart: always
+
+  backend:
+    build: ../../../apps/backend
+    env_file:
+      - ../../../.env.prod
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.api.rule=Host(`api.ouvrier.com`)'
+      - 'traefik.http.routers.api.entrypoints=websecure'
+      - 'traefik.http.routers.api.tls.certresolver=letsencrypt'
+    restart: always
+
+  frontend_admin:
+    build: ../../../apps/frontend-admin
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.admin.rule=Host(`admin.ouvrier.com`)'
+      - 'traefik.http.routers.admin.entrypoints=websecure'
+      - 'traefik.http.routers.admin.tls.certresolver=letsencrypt'
+    restart: always
+
+  frontend_public:
+    build: ../../../apps/frontend-public
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.public.rule=Host(`ouvrier.com`)'
+      - 'traefik.http.routers.public.entrypoints=websecure'
+      - 'traefik.http.routers.public.tls.certresolver=letsencrypt'
+    restart: always
+
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo_prod:/data/db
+    restart: always
+
+volumes:
+  letsencrypt:
+  mongo_prod:
+
+networks:
+  ouvrier_frontend:
+    driver: bridge
+
+  ouvrier_backend:
+    driver: bridge

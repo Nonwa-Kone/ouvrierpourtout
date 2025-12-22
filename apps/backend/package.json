@@ -1,0 +1,38 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@vercel/node": "^5.0.2",
+    "axios": "^1.7.7",
+    "backblaze-b2": "^1.7.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-validator": "^7.2.0",
+    "helmet": "^8.0.0",
+    "jimp": "^1.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.16",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "socket.io": "^4.8.1"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "Backend",
+    "API",
+    "Application recherche d'ouvrier"
+  ],
+  "author": "Kone Nonwa",
+  "license": "ISC",
+  "description": "Backend structurer en API REST pour le projet ouvrierpourtout",
+  "engines": {
+    "node": ">=20.x"
+  }
+}

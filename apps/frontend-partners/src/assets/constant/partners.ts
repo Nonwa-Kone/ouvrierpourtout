@@ -1,0 +1,27 @@
+export const initPartner = {
+  personalInfos: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    gender: '',
+  },
+  address: {
+    city: '',
+    zipCode: '',
+    country: '',
+    street: '',
+    commune: '',
+    villa: '',
+  },
+  profession: '',
+  nationality: 'Ivoirienne',
+  contract: '',
+  token: '',
+  password: '',
+  isFirstLogin: false,
+  isActive: false,
+  isLogged: false,
+  createdAt: '',
+  updateAt: '',
+};
