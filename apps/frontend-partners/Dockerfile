@@ -1,9 +1,11 @@
-FROM node:20-alpine AS build
+ARG NODE_VERSION=24.12.0
 
-WORKDIR /app
+FROM node:${NODE_VERSION}-alpine AS build
 
-COPY package*.json ./
-RUN npm install
+WORKDIR /usr/src/app
+
+COPY package*.json package-lock.json ./
+RUN npm install --force
 
 COPY . .
 RUN npm run build
@@ -11,7 +13,7 @@ RUN npm run build
 # Stage 2 : prod
 FROM nginx:alpine
 
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /usr/src/app/dist /usr/share/nginx/html/
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

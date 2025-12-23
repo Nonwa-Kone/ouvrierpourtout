@@ -9,7 +9,7 @@ services:
       - '--entrypoints.websecure.address=:443'
       - '--certificatesresolvers.letsencrypt.acme.httpchallenge=true'
       - '--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web'
-      - '--certificatesresolvers.letsencrypt.acme.email=admin@ouvrier.com'
+      - '--certificatesresolvers.letsencrypt.acme.email=admin@ouvrierpourtout.com'
       - '--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json'
     ports:
       - '80:80'
@@ -25,42 +25,46 @@ services:
       - ../../../.env.prod
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.api.rule=Host(`api.ouvrier.com`)'
+      - 'traefik.http.routers.api.rule=Host(`api.ouvrierpourtout.com`)'
       - 'traefik.http.routers.api.entrypoints=websecure'
       - 'traefik.http.routers.api.tls.certresolver=letsencrypt'
     restart: always
+    networks:
+      - network_ouvrier
 
   frontend_admin:
     build: ../../../apps/frontend-admin
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.admin.rule=Host(`admin.ouvrier.com`)'
+      - 'traefik.http.routers.admin.rule=Host(`admin.ouvrierpourtout.com`)'
       - 'traefik.http.routers.admin.entrypoints=websecure'
       - 'traefik.http.routers.admin.tls.certresolver=letsencrypt'
     restart: always
+    networks:
+      - network_ouvrier
 
   frontend_public:
     build: ../../../apps/frontend-public
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.public.rule=Host(`ouvrier.com`)'
+      - 'traefik.http.routers.public.rule=Host(`ouvrierpourtout.com`)'
       - 'traefik.http.routers.public.entrypoints=websecure'
       - 'traefik.http.routers.public.tls.certresolver=letsencrypt'
     restart: always
+    networks:
+      - network_ouvrier
 
   mongo:
     image: mongo:7
     volumes:
       - mongo_prod:/data/db
     restart: always
+    networks:
+      - network_ouvrier
 
 volumes:
   letsencrypt:
   mongo_prod:
 
 networks:
-  ouvrier_frontend:
-    driver: bridge
-
-  ouvrier_backend:
-    driver: bridge
+  network_ouvrier:
