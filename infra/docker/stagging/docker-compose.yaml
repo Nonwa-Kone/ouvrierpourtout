@@ -3,20 +3,22 @@ services:
     image: traefik:latest
     container_name: traefik
     command:
+      - '--api.insecure=true'
       - '--providers.docker=true'
-      - '--providers.docker.exposedbydefault=false'
       - '--entrypoints.web.address=:80'
       - '--entrypoints.websecure.address=:443'
-      - '--certificatesresolvers.le.acme.email=admin@ouvrier.com'
+      - '--providers.docker.exposedbydefault=false'
+      - '--certificatesresolvers.le.acme.email=info@ouvrierpourtout.com'
       - '--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json'
       - '--certificatesresolvers.le.acme.httpchallenge.entrypoint=web'
     ports:
       - '80:80'
-      - '443:443'
+      - '8080:8080'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik/acme.json:/letsencrypt/acme.json
-    networks: [ouvrier-net]
+    networks:
+      - backend-network-ouvrier
     restart: always
 
   backend:
@@ -45,11 +47,12 @@ services:
       - ../../../apps/backend/.env
     depends_on:
       - mongo
+      - traefik
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.api-staging.rule=Host(`api.staging.ouvrierpourtout.com`)'
-      - 'traefik.http.routers.api-staging.entrypoints=websecure'
-      - 'traefik.http.routers.api-staging.tls.certresolver=letsencrypt'
+      - 'traefik.http.routers.backend.rule=Host(`api.staging.ouvrierpourtout.com`)'
+      - 'traefik.http.routers.backend.entrypoints=websecure'
+      - 'traefik.http.routers.backend.tls.certresolver=letsencrypt'
     restart: always
     ports:
       - '4000:4000'
@@ -64,11 +67,12 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - backend
+      - traefik
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.admin-staging.rule=Host(`admin.staging.ouvrierpourtout.com`)'
-      - 'traefik.http.routers.admin-staging.entrypoints=websecure'
-      - 'traefik.http.routers.admin-staging.tls.certresolver=letsencrypt'
+      - 'traefik.http.routers.frontend_admin.rule=Host(`admin.staging.ouvrierpourtout.com`)'
+      - 'traefik.http.routers.frontend_admin.entrypoints=websecure'
+      - 'traefik.http.routers.frontend_admin.tls.certresolver=letsencrypt'
     restart: always
     ports:
       - '8001:80'
@@ -82,11 +86,12 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - backend
+      - traefik
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.public-staging.rule=Host(`staging.ouvrierpourtout.com`)'
-      - 'traefik.http.routers.public-staging.entrypoints=websecure'
-      - 'traefik.http.routers.public-staging.tls.certresolver=letsencrypt'
+      - 'traefik.http.routers.frontend_public.rule=Host(`staging.ouvrierpourtout.com`)'
+      - 'traefik.http.routers.frontend_public.entrypoints=websecure'
+      - 'traefik.http.routers.frontend_public.tls.certresolver=letsencrypt'
     restart: always
     ports:
       - '8000:80'
@@ -97,6 +102,8 @@ services:
     container_name: mongo
     image: mongo:latest
     restart: always
+    depends_on:
+      - traefik
     volumes:
       - mongo_staging:/data/db
     networks:
