@@ -1,9 +1,6 @@
 import { AxiosConfig } from '../config/axios.config';
 import { tDocument } from '../types/partners.type';
 
-const BASE_URL = 'https://tiers-service.vercel.app/document';
-// const BASE_URL = 'http://localhost:3000/document';
-
 export const getDocumentByOwnerId = async (
   ownerId: string
 ): Promise<{
@@ -12,9 +9,7 @@ export const getDocumentByOwnerId = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.get(
-      `${BASE_URL}/get-by-owner-id/${ownerId}`
-    );
+    const response = await AxiosConfig.get(`/get-by-owner-id/${ownerId}`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -31,7 +26,7 @@ export const updateDocument = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.put(`${BASE_URL}/${id}`, document);
+    const response = await AxiosConfig.put(`/${id}`, document);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -47,7 +42,7 @@ export const changeStatusDocument = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.put(`${BASE_URL}/${id}/status`, {
+    const response = await AxiosConfig.put(`/${id}/status`, {
       status,
     });
     return response.data;

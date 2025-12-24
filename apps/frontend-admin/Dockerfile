@@ -1,25 +1,29 @@
 # syntax=docker/dockerfile:1
 ARG NODE_VERSION=24.12.0
 
-###############
-# Build stage
+#----------------------------------------
+# BUILD STAGE
+#----------------------------------------
 FROM node:${NODE_VERSION}-alpine AS build
-WORKDIR /usr/src/app
+WORKDIR /frontend-admin
 
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install --legacy-peer-deps
 
 COPY . .
 RUN npm run build
 
+#----------------------------------------
+# DEPLOYMENT IN STAGGING STAGE
+#----------------------------------------
 FROM nginx:alpine
 
-# Copy custom nginx configuration
-# COPY infra/nginx/stagging.conf /etc/nginx/conf.d/default.conf
-
 # Copy production build files
-COPY --from=build /usr/src/app/dist /usr/share/nginx/html/
+COPY --from=build /frontend-admin/dist /usr/share/nginx/html/
 
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
+#----------------------------------------
+# END
+#----------------------------------------

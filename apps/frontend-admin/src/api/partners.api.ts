@@ -1,8 +1,6 @@
+import { API_ROOT } from '../config/app.config';
 import { AxiosConfig } from '../config/axios.config';
 import { filterPartner, tPartner } from '../types/partners.type';
-
-const BASE_URL = `https://tiers-service.vercel.app`;
-// const BASE_URL = `http://localhost:3000`;
 
 // Read
 export const getAllPartners = async (
@@ -18,7 +16,7 @@ Promise<{
   prevPage: number;
 }> => {
   try {
-    const response = await AxiosConfig.get(`${BASE_URL}/ouvriers`, {
+    const response = await AxiosConfig.get(`/${API_ROOT.ouvriers}`, {
       params: query,
     });
     return response.data;
@@ -35,7 +33,7 @@ export const getPartnerById = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.get(`${BASE_URL}/ouvriers/${id}`);
+    const response = await AxiosConfig.get(`/${API_ROOT.ouvriers}/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -51,7 +49,7 @@ export const createPartner = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.post(`${BASE_URL}/ouvriers`, partner);
+    const response = await AxiosConfig.post(`/${API_ROOT.ouvriers}`, partner);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -69,7 +67,7 @@ export const updatePartner = async (
 }> => {
   try {
     const response = await AxiosConfig.put(
-      `${BASE_URL}/ouvriers/${id}`,
+      `/${API_ROOT.ouvriers}/${id}`,
       partner
     );
     return response.data;
@@ -87,7 +85,7 @@ export const deletePartner = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.delete(`${BASE_URL}/ouvriers/${id}`);
+    const response = await AxiosConfig.delete(`/${API_ROOT.ouvriers}/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -105,7 +103,7 @@ export const toggleActiveAccoutPartner = async (
 }> => {
   try {
     const response = await AxiosConfig.put(
-      `${BASE_URL}/ouvriers/${id}/active`,
+      `/${API_ROOT.ouvriers}/${id}/active`,
       {
         active,
       }

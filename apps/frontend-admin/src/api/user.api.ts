@@ -1,8 +1,6 @@
+import { API_ROOT } from '../config/app.config';
 import { AxiosConfig } from '../config/axios.config';
 import { tFilterUser, tUser } from '../types/user.type';
-
-// const BASE_URL = `${'https://tiers-service.vercel.app'}`;
-const BASE_URL = `${'http://localhost:4000'}`;
 
 // Read
 export const getAllUsers = async (
@@ -18,7 +16,7 @@ export const getAllUsers = async (
   totalPages?: number;
 }> => {
   try {
-    const response = await AxiosConfig.get(`${BASE_URL}/admin`, {
+    const response = await AxiosConfig.get(`/${API_ROOT.admin}`, {
       params: query,
     });
     return response.data;
@@ -35,7 +33,7 @@ export const getUserById = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.get(`${BASE_URL}/admin/${id}`);
+    const response = await AxiosConfig.get(`/${API_ROOT.admin}/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -51,7 +49,7 @@ export const createUser = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.post(`${BASE_URL}/admin`, user);
+    const response = await AxiosConfig.post(`/${API_ROOT.admin}`, user);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -68,7 +66,7 @@ export const updateUser = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.put(`${BASE_URL}/admin/${id}`, user);
+    const response = await AxiosConfig.put(`/${API_ROOT.admin}/${id}`, user);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -84,7 +82,7 @@ export const deleteUser = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.delete(`${BASE_URL}/admin/${id}`);
+    const response = await AxiosConfig.delete(`/${API_ROOT.admin}/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -101,7 +99,7 @@ export const toggleActiveAccoutUser = async (
   success: boolean;
 }> => {
   try {
-    const response = await AxiosConfig.put(`${BASE_URL}/admin/${id}/active`, {
+    const response = await AxiosConfig.put(`/${API_ROOT.admin}/${id}/active`, {
       active,
     });
     return response.data;
@@ -120,7 +118,7 @@ export const authAdmin = async (body: {
   token: string;
 }> => {
   try {
-    const response = await AxiosConfig.post(`${BASE_URL}/admin/login`, body);
+    const response = await AxiosConfig.post(`/${API_ROOT.admin}/login`, body);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -133,7 +131,7 @@ export const checkAuthByToken = async (): Promise<{
   data: tUser;
 }> => {
   try {
-    const response = await AxiosConfig.post(`${BASE_URL}/admin/findByToken`);
+    const response = await AxiosConfig.post(`/${API_ROOT.admin}/findByToken`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -148,7 +146,7 @@ export const logoutAdmin = async (
 }> => {
   try {
     const response = await AxiosConfig.post(
-      `${BASE_URL}/admin/logout/${userId}`
+      `/${API_ROOT.admin}/logout/${userId}`
     );
     return response.data;
   } catch (error) {

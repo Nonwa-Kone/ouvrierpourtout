@@ -1,8 +1,5 @@
 import { AxiosConfig } from '../config/axios.config';
 
-const BASE_URL = 'https://tiers-service.vercel.app';
-// const BASE_URL = 'http://localhost:3000';
-
 type tInsight = {
   orders: number;
   customers: number;
@@ -15,7 +12,7 @@ export const getInsight = async (): Promise<{
   status: number;
 }> => {
   try {
-    const response = await AxiosConfig.get(`${BASE_URL}/insight/admin`);
+    const response = await AxiosConfig.get(`/insight/admin`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -30,7 +27,7 @@ export const getInsightById = async (
   status: number;
 }> => {
   try {
-    const response = await AxiosConfig.get(`${BASE_URL}/insight/${id}`);
+    const response = await AxiosConfig.get(`/insight/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);

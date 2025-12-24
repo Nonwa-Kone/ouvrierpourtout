@@ -1,19 +1,27 @@
 ARG NODE_VERSION=24.12.0
 
+#----------------------------------------
+# BUILD STAGE
+#----------------------------------------
 FROM node:${NODE_VERSION}-alpine AS build
 
-WORKDIR /usr/src/app
+WORKDIR /frontend-partner
 
 COPY package*.json package-lock.json ./
-RUN npm install --force
+RUN npm install --legacy-peer-deps
 
 COPY . .
 RUN npm run build
 
-# Stage 2 : prod
+#----------------------------------------
+# DEPLOYMENT IN STAGGING STAGE
+#----------------------------------------
 FROM nginx:alpine
 
-COPY --from=build /usr/src/app/dist /usr/share/nginx/html/
+COPY --from=build /frontend-partner/dist /usr/share/nginx/html/
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+#----------------------------------------
+# END
+#----------------------------------------

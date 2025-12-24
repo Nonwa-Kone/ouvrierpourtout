@@ -9,10 +9,13 @@ const connect = async () => {
   }
 
   try {
-    const db = await mongoose.connect('mongodb://mongo:27017/ouvrier_dev', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const db = await mongoose.connect(
+      `${process.env.MONGODB_URL_ONLINE}_${process.env.NODE_ENV}`,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
     isConnected = db.connections[0].readyState;
     console.log('Connexion MongoDB établie');
   } catch (error) {

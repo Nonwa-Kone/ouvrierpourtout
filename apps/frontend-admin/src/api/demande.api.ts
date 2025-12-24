@@ -1,3 +1,4 @@
+import { API_ROOT } from '../config/app.config';
 import { AxiosConfig } from '../config/axios.config';
 import {
   tDemande,
@@ -5,15 +6,12 @@ import {
   tFilterDemande,
 } from './../types/demande.type';
 
-const API_URL = 'https://tiers-service.vercel.app';
-// const API_URL = 'http://localhost:3000';
-
 //write
 export const createDemande = async (
   data: tDemande
 ): Promise<tDemandeResponse> => {
   try {
-    const response = await AxiosConfig.post(`${API_URL}/order`, data);
+    const response = await AxiosConfig.post(`/${API_ROOT.order}`, data);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -26,7 +24,7 @@ export const assignTicketSpecialist = async (data: {
 }): Promise<tDemandeResponse> => {
   try {
     const response = await AxiosConfig.post(
-      `${API_URL}/order/assign-ticket-specialist`,
+      `/${API_ROOT.order}/assign-ticket-specialist`,
       data
     );
     return response.data;
@@ -41,7 +39,7 @@ export const assignTradeBody = async (data: {
 }): Promise<tDemandeResponse> => {
   try {
     const response = await AxiosConfig.post(
-      `${API_URL}/order/assign-trade-body`,
+      `/${API_ROOT.order}/assign-trade-body`,
       data
     );
     return response.data;
@@ -55,7 +53,7 @@ export const getDemandes = async (
   filter: tFilterDemande
 ): Promise<tDemandeResponse> => {
   try {
-    const response = await AxiosConfig.get(`${API_URL}/order`, {
+    const response = await AxiosConfig.get(`/${API_ROOT.order}`, {
       params: filter,
     });
     return response.data;
@@ -66,7 +64,7 @@ export const getDemandes = async (
 
 export const getDemandeById = async (id: string): Promise<tDemandeResponse> => {
   try {
-    const response = await AxiosConfig.get(`${API_URL}/order/${id}`);
+    const response = await AxiosConfig.get(`/${API_ROOT.order}/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -77,7 +75,7 @@ export const getDemandeByCustomerId = async (
   id: string
 ): Promise<tDemandeResponse> => {
   try {
-    const response = await AxiosConfig.get(`${API_URL}/order/customer/${id}`);
+    const response = await AxiosConfig.get(`/${API_ROOT.order}/customer/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -90,7 +88,7 @@ export const updateDemande = async (
   data: tDemande
 ): Promise<tDemandeResponse> => {
   try {
-    const response = await AxiosConfig.put(`${API_URL}/order/${id}`, data);
+    const response = await AxiosConfig.put(`/${API_ROOT.order}/${id}`, data);
     return response.data;
   } catch (error) {
     throw new Error(error as string);
@@ -100,7 +98,7 @@ export const updateDemande = async (
 // delete
 export const deleteDemande = async (id: string): Promise<tDemandeResponse> => {
   try {
-    const response = await AxiosConfig.delete(`${API_URL}/order/${id}`);
+    const response = await AxiosConfig.delete(`/${API_ROOT.order}/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error as string);

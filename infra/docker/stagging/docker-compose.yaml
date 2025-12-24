@@ -1,40 +1,110 @@
-version: '3.9'
-
 services:
+  traefik:
+    image: traefik:latest
+    container_name: traefik
+    command:
+      - '--providers.docker=true'
+      - '--providers.docker.exposedbydefault=false'
+      - '--entrypoints.web.address=:80'
+      - '--entrypoints.websecure.address=:443'
+      - '--certificatesresolvers.le.acme.email=admin@ouvrier.com'
+      - '--certificatesresolvers.le.acme.storage=/letsencrypt/acme.json'
+      - '--certificatesresolvers.le.acme.httpchallenge.entrypoint=web'
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/acme.json:/letsencrypt/acme.json
+    networks: [ouvrier-net]
+    restart: always
+
   backend:
-    build: ../../../apps/backend
+    container_name: backend
+    build:
+      context: ../../../apps/backend
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+      - API_VERSION=/v1/api
+      - PORT_LOCAL=4000
+      - PORT_PROD=4000
+      - PORT_STAGGING=4001
+      - PORT_TEST=4002
+      - API_URL_LOCAL="http://backend:4000"
+      - API_URL_STAGGING="http://192.162.71.169:4001"
+      - API_URL_TEST="http://192.162.71.169:4002"
+      - API_URL_PROD="http://192.162.71.169:4000"
+      - SECRET_TOKEN_ADMIN_LOGIN="aqwxszedcvbgfrt12^shsj@sjhjdkjjs"
+      - SECRET_TOKEN_PARTNER_LOGIN="abhdkskjkdjkjlks"
+      - GMAIL="konenonwa1998@gmail.com"
+      - GMAIL_PASSWORD="ibnw qeab yrmw prcs"
+      - MONGODB_URL_ONLINE=mongodb://mongo:27017/db_ouvrier
+      - MONGODB_URL_LOCAL="mongodb://mongo:27017/db_ouvrier
     env_file:
-      - ../../../.env.staging
+      - ../../../apps/backend/.env
+    depends_on:
+      - mongo
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.api-staging.rule=Host(`api.staging.ouvrierpourtout.com`)'
       - 'traefik.http.routers.api-staging.entrypoints=websecure'
       - 'traefik.http.routers.api-staging.tls.certresolver=letsencrypt'
     restart: always
+    ports:
+      - '4000:4000'
+    networks:
+      - backend-network-ouvrier
+      - frontend-network-ouvrier
 
   frontend_admin:
-    build: ../../../apps/frontend-admin
+    container_name: frontend-admin
+    build:
+      context: ../../../apps/frontend-admin
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.admin-staging.rule=Host(`admin.staging.ouvrierpourtout.com`)'
       - 'traefik.http.routers.admin-staging.entrypoints=websecure'
       - 'traefik.http.routers.admin-staging.tls.certresolver=letsencrypt'
     restart: always
+    ports:
+      - '8001:80'
+    networks:
+      - frontend-network-ouvrier
 
   frontend_public:
-    build: ../../../apps/frontend-public
+    container_name: frontend-public
+    build:
+      context: ../../../apps/frontend-public
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.public-staging.rule=Host(`staging.ouvrierpourtout.com`)'
       - 'traefik.http.routers.public-staging.entrypoints=websecure'
       - 'traefik.http.routers.public-staging.tls.certresolver=letsencrypt'
     restart: always
+    ports:
+      - '8000:80'
+    networks:
+      - frontend-network-ouvrier
 
   mongo:
-    image: mongo:7
+    container_name: mongo
+    image: mongo:latest
+    restart: always
     volumes:
       - mongo_staging:/data/db
-    restart: always
+    networks:
+      - backend-network-ouvrier
 
 volumes:
   mongo_staging:
+
+networks:
+  backend-network-ouvrier:
+  frontend-network-ouvrier:
