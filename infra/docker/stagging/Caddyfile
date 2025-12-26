@@ -1,13 +1,13 @@
 api.ouvrierpourtout.com www.api.ouvrierpourtout.com {
-	reverse_proxy frontend_admin:4000
+	reverse_proxy localhost:4000
 }
 
 
 ouvrierpourtout.com www.ouvrierpourtout.com {
-	reverse_proxy frontend_public:8000
+	reverse_proxy localhost:8000
 }
 
 
 admin.ouvrierpourtout.com www.admin.ouvrierpourtout.com {
-	reverse_proxy frontend_admin:8001
+	reverse_proxy localhost:8001
 }
