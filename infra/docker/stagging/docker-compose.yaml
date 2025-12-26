@@ -2,21 +2,16 @@ services:
   caddy:
     image: caddy:2.11-alpine
     restart: unless-stopped
-    # cap_add:
-    #   - NET_ADMIN
     ports:
       - '80:80'
       - '443:443'
       - '443:443/udp'
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      # - ./conf:/etc/caddy
-      # - ./site:/srv
       - caddy_data:/data
       - caddy_config:/config
     networks:
-      - backend-network-ouvrier
-      - frontend-network-ouvrier
+      - ouvrier-net
 
   backend:
     container_name: backend
@@ -46,8 +41,7 @@ services:
     ports:
       - '4000:4000'
     networks:
-      - backend-network-ouvrier
-      - frontend-network-ouvrier
+      - ouvrier-net
 
   frontend_admin:
     container_name: frontend-admin
@@ -60,7 +54,7 @@ services:
     ports:
       - '8001:80'
     networks:
-      - frontend-network-ouvrier
+      - ouvrier-net
 
   frontend_public:
     container_name: frontend-public
@@ -73,7 +67,7 @@ services:
     ports:
       - '8000:80'
     networks:
-      - frontend-network-ouvrier
+      - ouvrier-net
 
   mongo:
     container_name: mongo
@@ -82,7 +76,7 @@ services:
     volumes:
       - mongo_staging:/data/db
     networks:
-      - backend-network-ouvrier
+      - ouvrier-net
 
 volumes:
   mongo_staging:
@@ -90,5 +84,4 @@ volumes:
   caddy_config:
 
 networks:
-  backend-network-ouvrier:
-  frontend-network-ouvrier:
+  ouvrier-net:
