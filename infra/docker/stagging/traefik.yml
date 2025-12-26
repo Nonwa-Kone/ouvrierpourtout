@@ -1,0 +1,19 @@
+#configuration statique de Traefik
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+api:
+  dashboard: true # Dashboard Traefik : 8080
+  insecure: true
+
+entryPoints:
+  web:
+    address: '.80' # Entrypoint pour HTTP
+  websecure:
+    address: '.443' # Entrypoint pour HTTPS
+
+providers:
+  docker:
+    endpoint: 'unix:///var/run/docker.sock'
+    exposedByDefault: false
